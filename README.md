@@ -1,6 +1,4 @@
-# Isak & Oskar test-app
-
-Brädspels-söken
+# Isak & Oskar - Brädspels-söken
 
 En site som gör det möjligt att söka på på ett brädspel, och visa relevant data såsom namn, pris, skapare, en bild m.m.
 
@@ -19,4 +17,4 @@ Ex: https://api.boardgameatlas.com/api/search?name=&client_id=rQXWtpmku9&random=
 ## Krav
 
 * Tester för all funktionalitet ska finnas.
-* Det får ta max 60 minuter.
+* Det får ta max 60 minuter, vi gör så mycket vi hinner på den tiden.
