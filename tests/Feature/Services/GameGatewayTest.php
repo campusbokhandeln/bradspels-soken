@@ -30,8 +30,10 @@ class GameGatewayTest extends TestCase
     {
         $gateway = new GameGateway();
 
-        $results = $gateway->limit(10)->search('pokemon');
+        $tenResults = $gateway->limit(10)->search('pokemon');
+        $fiveResults = $gateway->limit(5)->search('pokemon');
 
-        $this->assertCount(10, $results);
+        $this->assertCount(10, $tenResults);
+        $this->assertCount(5, $fiveResults);
     }
 }
