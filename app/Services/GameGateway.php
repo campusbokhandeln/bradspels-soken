@@ -20,14 +20,18 @@ class GameGateway
     {
         $games = Http::get(config('services.boardgame_atlas.api_url') . '?limit=' . $this->limit . '&client_id=' . config('services.boardgame_atlas.id') .'&name=' . $searchTerm)->json();
 
-        return collect($games['games'])
-            ->map(fn ($game) => new Game($game['name'], $game['price'], $game['description'], $game['image_url'], $game['url']));
+        return $this->castToCollection($games);
     }
 
     public function random() : Collection
     {
         $games = Http::get(config('services.boardgame_atlas.api_url') . '?random=true&client_id=' . config('services.boardgame_atlas.id'))->json();
 
+        return $this->castToCollection($games);
+    }
+
+    protected function castToCollection(array $games) : Collection
+    {
         return collect($games['games'])
             ->map(fn ($game) => new Game($game['name'], $game['price'], $game['description'], $game['image_url'], $game['url']));
     }
