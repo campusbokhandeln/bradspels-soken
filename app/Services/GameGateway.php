@@ -18,7 +18,7 @@ class GameGateway
 
     public function search(string $searchTerm) : Collection
     {
-        $games = Http::get('https://api.boardgameatlas.com/api/search?limit=' . $this->limit . '&client_id=rQXWtpmku9&name=' . $searchTerm)->json();
+        $games = Http::get(config('services.boardgame_atlas.api_url') . '?limit=' . $this->limit . '&client_id=' . config('services.boardgame_atlas.id') .'&name=' . $searchTerm)->json();
 
         return collect($games['games'])
             ->map(fn ($game) => new Game($game['name'], $game['price'], $game['description'], $game['image_url'], $game['url']));
@@ -26,7 +26,7 @@ class GameGateway
 
     public function random() : Collection
     {
-        $games = Http::get('https://api.boardgameatlas.com/api/search?random=true&limit=' . $this->limit . '&client_id=rQXWtpmku9')->json();
+        $games = Http::get(config('services.boardgame_atlas.api_url') . '?random=true&client_id=' . config('services.boardgame_atlas.id'))->json();
 
         return collect($games['games'])
             ->map(fn ($game) => new Game($game['name'], $game['price'], $game['description'], $game['image_url'], $game['url']));

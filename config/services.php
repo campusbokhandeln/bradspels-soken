@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'boardgame_atlas' => [
+        'id' => env('BOARDGAME_ATLAS_ID'),
+        'secret' => env('BOARDGAME_ATLAS_SECRET'),
+        'api_url' => env('BOARDGAME_ATLAS_API_URL'),
+    ]
+
 ];

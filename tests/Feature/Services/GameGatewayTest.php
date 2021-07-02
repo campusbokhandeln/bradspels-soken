@@ -10,11 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class GameGatewayTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+    /** @test */
     public function it_can_get_games_from_the_api()
     {
         $gateway = new GameGateway();
@@ -42,8 +38,20 @@ class GameGatewayTest extends TestCase
     {
         $gateway = new GameGateway();
 
-        $game = $gateway->random();
-        dd($game);
-        $this->assertInstanceOf(Game::class, $game);
+        $games = $gateway->random();
+
+        $this->assertCount(1, $games);
+        $this->assertInstanceOf(Game::class, $games->first());
+    }
+
+    /** @test */
+    public function it_is_truly_random()
+    {
+        $gateway = new GameGateway();
+
+        $first = $gateway->random();
+        $second = $gateway->random();
+
+        $this->assertNotEquals($first->first()->name, $second->first()->name);
     }
 }
