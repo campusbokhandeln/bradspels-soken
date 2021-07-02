@@ -36,4 +36,14 @@ class GameGatewayTest extends TestCase
         $this->assertCount(10, $tenResults);
         $this->assertCount(5, $fiveResults);
     }
+
+    /** @test */
+    public function it_can_get_a_random_game()
+    {
+        $gateway = new GameGateway();
+
+        $game = $gateway->random();
+        dd($game);
+        $this->assertInstanceOf(Game::class, $game);
+    }
 }

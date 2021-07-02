@@ -23,4 +23,12 @@ class GameGateway
         return collect($games['games'])
             ->map(fn ($game) => new Game($game['name'], $game['price'], $game['description'], $game['image_url'], $game['url']));
     }
+
+    public function random() : Collection
+    {
+        $games = Http::get('https://api.boardgameatlas.com/api/search?random=true&limit=' . $this->limit . '&client_id=rQXWtpmku9')->json();
+
+        return collect($games['games'])
+            ->map(fn ($game) => new Game($game['name'], $game['price'], $game['description'], $game['image_url'], $game['url']));
+    }
 }
