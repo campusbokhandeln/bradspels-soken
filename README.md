@@ -1,4 +1,4 @@
-# Isak & Oskar - Brädspels-söken
+# Brädspels-söken
 
 En site som gör det möjligt att söka på på ett brädspel, och visa relevant data såsom namn, pris, skapare, en bild m.m.
 
